@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Never Eat Alone</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="ratchet.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="getInfo()">
+
+
+
+<p>id????? <span id="user_friends"></span></p>
+
+
+
+
+<button class="btn btn-block" onclick="location='./index2.html'">Get My Geolocation</button>
+<hr/>
+
+  <button class="btn btn-block" onclick="location='./homepage.html'">Back to Main Page</button>
+<hr/>
+
+<button class="btn btn-block" onclick="revoke()"><img src="img/fblogout.png" width="180" height="25" alt=""/></button>
+
+
+
+
+<script src="cordova.js"></script>
+<script src="openfb.js"></script>
+
+<script>
+
+    openFB.init('774291202603858'); // Defaults to sessionStorage for storing the Facebook token
+
+//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+//  openFB.init('774291202603858', 'http://localhost/openfb/oauthcallback.html', window.localStorage);
+
+    function login() {
+        openFB.login('email',
+                function() {
+                    alert('Facebook login succeeded');
+					  window.location ="./homepage.html";
+                },
+                function(error) {
+                    alert('Facebook login failed: ' + error.error_description);
+                });
+    }
+
+    function getInfo() {
+        openFB.api({
+			
+            path: '/me/friends',
+			
+           success: function(data) {
+			   
+               console.log(JSON.stringify(data));
+               document.getElementById("user_friends").innerHTML = data;
+            },
+				
+            error: errorHandler
+          });
+    }
+
+    function share() {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: 'Testing Facebook APIs'
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+
+
+    function revoke() {
+        openFB.revokePermissions(
+                function() {
+                    alert('Permissions revoked');
+					  window.location ="./index.html"
+                },
+                errorHandler);
+    }
+
+    function errorHandler(error) {
+        alert(error.message);
+    }
+	
+	window.onload=function(){
+			getInfo();
+	}
+
+
+</script>
+</body>
+</html>

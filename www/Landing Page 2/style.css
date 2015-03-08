@@ -1,0 +1,99 @@
+body {
+	color: rgb(120,120,130);
+	font-family: 'Raleway', sans-serif;
+
+}
+
+.top {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+h1 {
+	font-weight: normal;
+}
+
+
+
+.signupdesc {
+	font-family: 'Times New Roman';
+	font-style: italic;
+}
+
+#signupform {
+	margin-bottom: 2px;
+}
+
+#emailbutton {
+	color: rgb(255,255,255);
+	background-color: rgb(230, 110, 100);
+	font-weight: bold;
+	padding: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+	border-color: rgb(180,100,100);
+}
+
+#emailtext {
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	color: black;
+	font-style: normal;
+}
+
+#emailtext.default {
+	font-style: italic;
+	color: rgb(85,85,85);
+}
+
+.visualdirections {
+	margin-top: 30px;
+	display: inline-block;
+	font-family: 'Raleway', sans-serif;
+}
+
+.directiontd {
+	text-align: center;
+	width: 250px;
+}
+
+.directionimg {
+	height: 150px;
+}
+
+
+.info {
+	margin: 30px;
+	padding: 20px;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+
+h2 {
+	color: rgb(100,100,100);
+	font-weight: bolder;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+h3 {
+	color: rgb(140,140,140);
+	font-style: italic;
+	font-weight: lighter;
+	font-size: 1.2rem;
+	margin-top: 15px;
+}
+
+p {
+	margin: 0px;
+	margin-top: 20px;
+	color: rgb(100,100,100);
+	font-size: .8rem;
+}
+
+.footer {
+	font-size: .7rem;
+	text-align: right;
+}

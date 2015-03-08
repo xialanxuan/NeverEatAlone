@@ -1,0 +1,96 @@
+<!-DOCUMENT TYPE: HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<!-- <link href='http://fonts.googleapis.com/css?family=Raleway:400,300' rel='stylesheet' type='text/css'> -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<script src="jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="top">
+	<img src="img/logo.png">
+	<h1>7 billion people in the world.  Start meeting them.</h1>
+	<form name="signup" id="signupform" action="#" method="post">
+		<input id="emailtext" class="default" type="text" name="email" onfocus="focusemail()" onblur="bluremail()">
+		<input id="emailbutton" type="submit" value="Keep Me Posted!">
+	</form>
+	<div class="signupdesc">
+		Sign up for release notification!
+	</div>
+	
+	<div class="visualdirections">
+		<table>
+			<tr>
+				<td class="directiontd">
+					Step 1
+					<br>
+					<img class="directionimg" src="img/Directions_Step_1.png">
+					<br>
+					No plans
+				</td>
+				<td class="directiontd">
+					Step 2
+					<br>
+					<img class="directionimg" src="img/Directions_Step_2.png">
+					<br>
+					Download app
+				</td>
+				<td class="directiontd">
+					Step 3
+					<br>
+					<img class="directionimg" src="img/Directions_Step_3.png">
+					<br>
+					New friends!
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="info">
+		<h2>About</h2>
+		<h3>It's a big world.  Never Eat Alone helps bring it together.</h3>
+		<p><em>Never Eat Alone</em> provides an easy, simple way to connect with your friends and to make new ones.</o>
+		<p>No time to make plans?  Friends out of town?  Need new friends in a new city?  Or just want some company for dinner?</p>
+		<p>Download Never Eat Alone, broadcast what you want to do to your local area or Facebook network, and start hanging out.</p>
+		<p>It's simple.  It's free.  And it beats eating alone.</p>
+	</div>
+
+</div>
+
+<div class="footer">
+	Copyright 2014 Never Eat Alone
+</div>
+
+
+<script>
+	var defaultemailtext = "Enter your email...";
+	$("#emailtext").val(defaultemailtext);
+
+	function focusemail()
+	{
+		$("#emailtext").toggleClass("default");
+
+		if ($("#emailtext").val() == defaultemailtext)
+		{
+			$("#emailtext").val("");
+		}
+	}
+
+	function bluremail()
+	{
+		$("#emailtext").toggleClass("default");
+
+		if ($("#emailtext").val() == "")
+		{
+			$("#emailtext").val(defaultemailtext);
+		}
+	}
+
+</script>
+
+</body>
+</html>

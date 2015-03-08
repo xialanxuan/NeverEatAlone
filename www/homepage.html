@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Never Eat Alone</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <link rel="stylesheet" href="ratchet.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body onload="getInfo()">
+
+
+<p><span id="pic"></span></p>
+<p>id： <span id="user_id"></span></p>
+<p>Name: <span id="userName"></span></p>
+<p>Gender: <span id="user_gender"></span></p>
+<p>Birthday: <span id="user_birthday"></span></p>
+
+
+
+<button class="btn btn-block" onclick="location='./index2.html'">Get My Geolocation</button>
+<hr/>
+
+<button class="btn btn-block" onclick="location='./myfriend.html'">my friend list</button>
+<hr/>
+
+
+<button class="btn btn-block" onclick="revoke()"><img src="img/fblogout.png" width="180" height="25" alt=""/></button>
+
+
+
+
+<script src="cordova.js"></script>
+<script src="openfb.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+
+    openFB.init('774291202603858'); // Defaults to sessionStorage for storing the Facebook token
+
+//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+//  openFB.init('774291202603858', 'http://localhost/openfb/oauthcallback.html', window.localStorage);
+
+    function login() {
+        openFB.login('email',
+                function() {
+                   // alert('Facebook login succeeded');
+					  window.location ="./homepage.html";
+                },
+                function(error) {
+                    alert('Facebook login failed: ' + error.error_description);
+                });
+    }
+	
+
+	
+
+    function getInfo() {
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                console.log(JSON.stringify(data));
+                document.getElementById("userName").innerHTML = data.name;
+				
+				
+				 document.getElementById("user_birthday").innerHTML = data.birthday;
+				 document.getElementById("user_id").innerHTML = data.id;
+				 document.getElementById("user_gender").innerHTML = data.gender;
+				//document.write("<img src =https://graph.facebook.com/'+data.id+'/picture>");
+				document.getElementById("pic").innerHTML="<img src=https://graph.facebook.com/"+data.id+"/picture?width=100&height=100>";
+			var dat="123";	
+  $.post("http://127.0.0.1:8000/users/fblogin/",{fb_id:data.id,name:data.name,gender:data.gender,birthday:data.birthday},function(result){
+    
+  });
+
+				
+				
+            },
+				
+            error: errorHandler});
+    }
+
+    function share() {
+        openFB.api({
+            method: 'POST',
+            path: '/me/feed',
+            params: {
+                message: 'Testing Facebook APIs'
+            },
+            success: function() {
+                alert('the item was posted on Facebook');
+            },
+            error: errorHandler});
+    }
+
+    function revoke() {
+        openFB.revokePermissions(
+                function() {
+                    alert('Permissions revoked');
+					  window.location ="./index.html"
+                },
+                errorHandler);
+    }
+
+    function errorHandler(error) {
+        alert(error.message);
+    }
+	
+	window.onload=function(){
+			getInfo();
+	}
+
+
+</script>
+</body>
+</html>

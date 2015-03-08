@@ -1,0 +1,36 @@
+textarea {
+    margin-bottom: 0px !important;
+}
+
+body {
+    padding: 20px;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    background: #999;
+}
+
+.info {
+	margin: 5px;
+	padding: 5px;
+}
+
+h2 {
+	color: rgb(100,100,100);
+	font-weight: bolder;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-size: medium;
+	text-align: justify;
+}
+
+h3 {
+	color: rgb(140,140,140);
+	font-style: italic;
+	font-weight: lighter;
+	font-size: small;
+	margin-top: 15px;
+}
